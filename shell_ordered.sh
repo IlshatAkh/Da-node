@@ -13,7 +13,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.rustup/bin
 export PATH=$PATH:/home/ritual/go/bin
 cd 0g-da-node && cargo build --release
-wget 148.251.46.18:8909/da_binaries.tar.gz
+wget http://148.251.46.18:8909/da_binaries.tar.gz
 tar --use-compress-program=pigz -xvf da_binaries.tar.gz 
 cp -R /home/ritual/0g-da-node/params /home/ritual/0g-da-node/target/release
 0gchaind tx staking delegate $VA $(shuf -i 10019999-10699989 -n 1)ua0gi --from wallet --gas=auto --fees=$(shuf -i 650-1000 -n 1)ua0gi --gas-adjustment=1.4 --chain-id zgtendermint_16600-2 -y
