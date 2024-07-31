@@ -1,5 +1,5 @@
-VA=0gvaloper19n0r875fjsgxvy993wrx4tz47yqc59d5mva0rz
-PK=7470fb257e6f3ec73450d47e7084a8890b698f5626d11f5e1cc30bea148a8373
+VA=Your_Valoper
+PK=Your_PK
 cd /home/ritual
 source .profile
 apt-get remove rustc cargo -y
