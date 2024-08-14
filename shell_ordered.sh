@@ -35,7 +35,7 @@ encoder_params_dir = "params/"
 # grpc server listen address
 grpc_listen_address = "0.0.0.0:34000"
 # chain eth rpc endpoint
-eth_rpc_endpoint = "${IP}:8545"
+eth_rpc_endpoint = "http://${IP}:8545"
 # public grpc service socket address to register in DA contract
 # ip:34000 (keep same port as the grpc listen address)
 # or if you have dns, fill your dns
@@ -88,7 +88,7 @@ User=ritual
 Type=simple
 WorkingDirectory=/home/ritual/0g-da-client/disperser
 ExecStart=/home/ritual/0g-da-client/disperser/bin/combined    \
---chain.rpc ${IP}:8545     \
+--chain.rpc http://${IP}:8545     \
 --chain.private-key $PK \
 --chain.receipt-wait-rounds 180     \
 --chain.receipt-wait-interval 1s     \
