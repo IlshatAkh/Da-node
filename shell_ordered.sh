@@ -20,23 +20,26 @@ cp -R /home/ritual/0g-da-node/params /home/ritual/0g-da-node/target/release
 cd 0g-da-node
 BLS=$(cargo run --bin key-gen)
 0gchaind query staking validator $VA
+
+IP=$(curl -s 2ip.ru)
+
 tee /home/ritual/0g-da-node/config.toml > /dev/null << EOF
 
 log_level = "info"
 
 data_path = "./db/"
-
 # path to downloaded params folder
 encoder_params_dir = "params/"
+
 
 # grpc server listen address
 grpc_listen_address = "0.0.0.0:34000"
 # chain eth rpc endpoint
-eth_rpc_endpoint = "https://rpc-testnet.0g.ai"
+eth_rpc_endpoint = "${IP}:8545"
 # public grpc service socket address to register in DA contract
 # ip:34000 (keep same port as the grpc listen address)
 # or if you have dns, fill your dns
-socket_address = "$(curl -s 2ip.ru):34000"
+socket_address = "${IP}:34000"
 
 # data availability contract to interact with
 da_entrance_address = "0xDFC8B84e3C98e8b550c7FEF00BCB2d8742d80a69"
@@ -85,7 +88,7 @@ User=ritual
 Type=simple
 WorkingDirectory=/home/ritual/0g-da-client/disperser
 ExecStart=/home/ritual/0g-da-client/disperser/bin/combined    \
---chain.rpc https://rpc-testnet.0g.ai     \
+--chain.rpc ${IP}:8545     \
 --chain.private-key $PK \
 --chain.receipt-wait-rounds 180     \
 --chain.receipt-wait-interval 1s     \
