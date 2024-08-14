@@ -16,7 +16,7 @@ cd 0g-da-node && cargo build --release
 wget http://195.201.197.180:29345/da_binaries.tar.gz
 tar --use-compress-program=pigz -xvf da_binaries.tar.gz
 cp -R /home/ritual/0g-da-node/params /home/ritual/0g-da-node/target/release
-0gchaind tx staking delegate $VA $(shuf -i 10019999-10699989 -n 1)ua0gi --from wallet --gas=auto --fees=$(shuf -i 650-1000 -n 1)ua0gi --gas-adjustment=1.4 --chain-id zgtendermint_16600-2 -y
+0gchaind --node http://65.109.19.204:26657 tx staking delegate $VA $(shuf -i 10019999-10699989 -n 1)ua0gi --from wallet --gas=auto --fees=$(shuf -i 650-1000 -n 1)ua0gi --gas-adjustment=1.4 --chain-id zgtendermint_16600-2 -y
 cd 0g-da-node
 BLS=$(cargo run --bin key-gen)
 0gchaind query staking validator $VA
